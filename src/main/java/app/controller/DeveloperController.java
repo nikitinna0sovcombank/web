@@ -19,7 +19,7 @@ public class DeveloperController {
     }
 
     @RequestMapping(value = "developer", method = RequestMethod.GET)
-    public ModelAndView developer() {
+    public ModelAndView viewDeveloper() {
         return new ModelAndView("developer", "command", new Developer());
     }
 
