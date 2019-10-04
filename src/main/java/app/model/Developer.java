@@ -3,8 +3,7 @@ public class Developer {
     private int id;
     private String name;
     private String price;
-
-
+    
     public int getId() {
         return id;
     }
