@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public class DbServiceImpl implements DbService{
 
-    @Autowired private static DbController dbController;
+    @Autowired private DbController dbController;
 
 
-    private static void connection() throws SQLException, ClassNotFoundException {
+    private void connection() throws SQLException, ClassNotFoundException {
         if (!dbController.isConnected()){
             dbController.connectionDataBases();
             dbController.setConnected(true);
