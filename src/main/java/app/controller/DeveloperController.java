@@ -37,6 +37,7 @@ public class DeveloperController {
 
     @RequestMapping(value = "/addDeveloper", method = RequestMethod.POST)
     public String addStudent(@ModelAttribute("mvc-dispatcher") Developer developer, ModelMap model) throws Exception {
+        System.out.println(developer.toString());
         dbService.addDevelopers(developer);
         model.addAttribute("name", developer.getName());
         return "result";
