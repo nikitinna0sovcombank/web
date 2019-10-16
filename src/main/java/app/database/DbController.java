@@ -1,11 +1,12 @@
 package app.database;
 import app.model.Developer;
+import org.springframework.stereotype.Repository;
 
-import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class DbController {
 
     private static boolean isConnected = false;
@@ -13,7 +14,15 @@ public class DbController {
     private static Statement statement;
     private static ResultSet resultSet;
 
-    private static void connectionDataBases() throws ClassNotFoundException, SQLException, NamingException {
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public static void setConnected(boolean connected) {
+        isConnected = connected;
+    }
+
+    public static void connectionDataBases() throws SQLException, ClassNotFoundException {
         Class.forName("org.h2.Driver");
         connection = DriverManager.getConnection("jdbc:h2:mem:","sa","");
         statement = connection.createStatement();
@@ -28,21 +37,18 @@ public class DbController {
         isConnected = true;
 
     }
-    public static void insetInDataBase(Developer developer) throws ClassNotFoundException, SQLException {
-        try {
-            if(!DbController.isConnected){
-                DbController.connectionDataBases();
+
+    public static void insetInDataBase(Developer developer) throws SQLException, ClassNotFoundException {
+            if(!isConnected){
+                connectionDataBases();
             }
             statement = connection.createStatement();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO Market (ids,name, price) VALUES ('" + developer.getId() + "','" + developer.getName() + "','" + developer.getPrice() + "');");
             statement.execute();
             System.out.println(getAllRecords());
-        } catch (Exception e) {
-
-        }
     }
-    public static List<String> getAllRecords() throws ClassNotFoundException, SQLException, NamingException
-    {
+
+    public static List<String> getAllRecords() throws SQLException {
         List<String> listRecord = new ArrayList<String>();
         if (isConnected){
             statement = connection.createStatement();
