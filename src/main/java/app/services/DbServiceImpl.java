@@ -32,7 +32,8 @@ public class DbServiceImpl implements DbService{
         if (DbController.isConnected()){
             DbController.insetInDataBase(developer);
         }else{
-            connection();
+            this.connection();
+            DbController.insetInDataBase(developer);
         }
     }
 
