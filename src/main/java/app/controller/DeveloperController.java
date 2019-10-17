@@ -1,5 +1,4 @@
 package app.controller;
-import app.database.DbController;
 import app.model.Developer;
 import app.services.DbServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import javax.naming.NamingException;
-import java.sql.SQLException;
-import java.util.List;
 
 @Controller
 public class DeveloperController {
