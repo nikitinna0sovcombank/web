@@ -14,7 +14,7 @@ public class DbController {
     private static Statement statement;
     private static ResultSet resultSet;
 
-    public boolean isConnected() {
+    public static boolean isConnected() {
         return isConnected;
     }
 
