@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan("app")
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
+    
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/WEB-INF/pages/**").addResourceLocations("/pages/");
